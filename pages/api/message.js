@@ -27,7 +27,7 @@ export default async function handler(req, res) {
     } else {
 
         try {
-            const completion = await openAI.createCompletion({
+            const completion = await openai.createCompletion({
                 model: "gpt-4-1106-preview", // required
                 prompt: req.body.Body, // completion based on this
                 temperature: 0.6, //
