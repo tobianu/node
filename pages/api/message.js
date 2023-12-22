@@ -27,12 +27,9 @@ export default async function handler(req, res) {
     } else {
 
         try {
-            const completion = await openai.chat.completions.create({
+            const completion = await openai.completions.create({
                 model: "gpt-4-1106-preview", // required
-                messages: [{
-                    role: "user",
-                    content: sentMessage
-                }],
+                prompt: req.body.Body, // completion is based on this
                 temperature: 0.6, //
                 n: 1,
                 max_tokens: 300,
