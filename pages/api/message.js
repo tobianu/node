@@ -18,9 +18,8 @@ export default async function handler(req, res) {
 
         try {
             const completion = await openai.chat.completions.create({
-                messages: [{role: "user", content: "What is the name of the best footballer in the world?"}]
                 model: "text-davinci-003", // required
-                //prompt: req.body.Body, // completion is based on this
+                prompt: req.body.Body, // completion is based on this
                 temperature: 0.6, //
                 n: 1,
                 max_tokens: 300,
