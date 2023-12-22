@@ -4,7 +4,7 @@
     
     var messageResponse = new MessagingResponse();
     
-    messageResponse.message('Reply does not goes here');
+    messageResponse.message('All reply does not goes here');
     
     // send response
     res.writeHead(200, {
