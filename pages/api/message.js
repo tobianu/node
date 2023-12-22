@@ -29,7 +29,8 @@ export default async function handler(req, res) {
         try {
             const completion = await openai.completions.create({
                 model: "gpt-4-1106-preview", // required
-                prompt: req.body.Body, // completion is based on this
+                // prompt: req.body.Body, // completion is based on this
+                prompt: "Hello, who is the best footballer in the world?",
                 temperature: 0.6, //
                 n: 1,
                 max_tokens: 300,
