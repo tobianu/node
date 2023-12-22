@@ -23,7 +23,7 @@ export default async function handler(req, res) {
 
         try {
             const completion = await openAI.createCompletion({
-                model: "gpt-3.5-turbo", // required
+                model: "text-davinci-003", // required
                 prompt: req.body.Body, // completion based on this
                 temperature: 0.6, //
                 n: 1,
