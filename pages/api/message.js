@@ -1,6 +1,6 @@
 import {
     Configuration,
-    OpenAIApi
+    openAI
 } from "openai";
 
 const configuration = new Configuration({
@@ -46,7 +46,7 @@ export default async function handler(req, res) {
                 // The request was made but no response was received
                 console.error("No response received from OpenAI:", error.request);
                 replyToBeSent = "Failed to receive a response. Please try again.";
-                
+
             } else {
                 // Something else happened in setting up the request
                 console.error("Error setting up the request to OpenAI:", error.message);
