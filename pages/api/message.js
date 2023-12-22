@@ -23,22 +23,34 @@ export default async function handler(req, res) {
 
         try {
             const completion = await openAI.createCompletion({
-                model: "text-davinci-003", // required
+                model: "gpt-4-1106-preview", // required
                 prompt: req.body.Body, // completion based on this
                 temperature: 0.6, //
                 n: 1,
-                max_tokens: 50,
+                max_tokens: 300,
                 // stop: "."
             });
         
             replyToBeSent = completion.data.choices[0].text
     
         } catch (error) {
+            console.error("Error with OpenAI request:", error);
+            
+            // More detailed error handling
             if (error.response) {
-                console.log(error.response)
-                replyToBeSent = "There was an issue with the server"
-            } else { // error getting response
-                replyToBeSent = "An error occurred during your request.";
+                // Log the response from OpenAI if available
+                console.error("Response from OpenAI:", error.response);
+                replyToBeSent = "There was an issue with processing your request.";
+
+            } else if (error.request) {
+                // The request was made but no response was received
+                console.error("No response received from OpenAI:", error.request);
+                replyToBeSent = "Failed to receive a response. Please try again.";
+                
+            } else {
+                // Something else happened in setting up the request
+                console.error("Error setting up the request to OpenAI:", error.message);
+                replyToBeSent = "An unexpected error occurred. Please try again.";
             }
 
         }
