@@ -29,7 +29,10 @@ export default async function handler(req, res) {
         try {
             const completion = await openai.completions.create({
                 model: "gpt-4-1106-preview", // required
-                prompt: req.body.Body, // completion based on this
+                messages: [{
+                    role: "user",
+                    content: sentMessage
+                }],
                 temperature: 0.6, //
                 n: 1,
                 max_tokens: 300,
