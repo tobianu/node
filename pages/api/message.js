@@ -1,13 +1,3 @@
-// import {
-//    Configuration,
-//    OpenAIApi
-// } from "openai";
-
-// const configuration = new Configuration({
-//    apiKey: process.env.OPENAI_API_KEY,
-// });
-// const openAI = new OpenAIApi(configuration);
-
 import OpenAI from 'openai';
 
 const openai = new OpenAI({
@@ -27,10 +17,9 @@ export default async function handler(req, res) {
     } else {
 
         try {
-            const completion = await openai.completions.create({
-                model: "gpt-4-1106-preview", // required
-                // prompt: req.body.Body, // completion is based on this
-                prompt: "Hello, who is the best footballer in the world?",
+            const completion = await openai.completion.create({
+                model: "text-davinci-003", // required
+                prompt: req.body.Body, // completion is based on this
                 temperature: 0.6, //
                 n: 1,
                 max_tokens: 300,
