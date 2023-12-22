@@ -27,7 +27,7 @@ export default async function handler(req, res) {
     } else {
 
         try {
-            const completion = await openai.completions.create({
+            const completion = await openai.chat.completions.create({
                 model: "gpt-4-1106-preview", // required
                 messages: [{
                     role: "user",
