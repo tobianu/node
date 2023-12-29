@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     const sentMessage = req.body.Body || '';
 
     if (sentMessage.trim().length === 0) {
-        messageResponse.message("We could not get your message. Please try again");
+        messageResponse.message("We could not get your message. Do you want to try again");
         res.writeHead(200, {'Content-Type': 'text/xml'});
         return res.end(messageResponse.toString());
     }
